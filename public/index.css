@@ -17,7 +17,7 @@ body {
 	font-family: "Space Grotesk", sans-serif;
 	background-color: var(--bg-dark);
 	/* ▼ お好みの背景画像URLに差し替えてください ▼ */
-	background-image: url("https://i.imgur.com/a/B6NFfPu.jpeg");
+	background-image: url("https://i.imgur.com/B6NFfPu.jpg");
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
