@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&family=Space+Grotesk:wght@400;500;600&display=swap");
 
 :root {
-	--nerv-red: #ff0015;
-	--bg-dark: #050507;
-	--input-bg: rgba(18, 18, 22, 0.55);
-	--border-color: rgba(255, 255, 255, 0.08);
+	--nerv-red: #ff001d;
+	--nerv-red-glow: rgba(255, 0, 29, 0.45);
+	--bg-dark: #040405;
+	--input-bg: rgba(20, 8, 10, 0.65);
+	--border-color: rgba(255, 0, 29, 0.25);
 }
 
 * {
@@ -16,28 +17,24 @@
 body {
 	font-family: "Space Grotesk", sans-serif;
 	background-color: var(--bg-dark);
-	/* ▼ お好みの背景画像URLに差し替えてください ▼ */
-	background-image: url("https://i.imgur.com/B6NFfPu.jpg");
+	background-image: url("https://i.imgur.com/EDcjChc.jpeg");
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
 	color: #fff;
-	height: 100vh;
+	min-height: 100vh;
+	min-height: 100dvh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
 }
-
-/* 背景を極微かに透けさせる暗幕 */
 .bg-overlay {
 	position: fixed;
 	inset: 0;
-	background: radial-gradient(
-		circle at center,
-		rgba(5, 5, 7, 0.75) 0%,
-		rgba(5, 5, 7, 0.92) 100%
-	);
+	background: 
+		radial-gradient(circle at 50% 40%, rgba(180, 0, 20, 0.18) 0%, rgba(4, 4, 5, 0.82) 70%),
+		linear-gradient(180deg, rgba(4, 4, 5, 0.75) 0%, rgba(4, 4, 5, 0.95) 100%);
 	backdrop-filter: blur(8px);
 	-webkit-backdrop-filter: blur(8px);
 	z-index: 1;
@@ -50,23 +47,25 @@ body {
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	max-width: 520px;
-	padding: 0 24px;
+	max-width: 580px;
+	padding: 0 20px;
 }
 
 .logo-title {
 	font-family: "Orbitron", sans-serif;
-	font-size: 4rem;
+	font-size: clamp(3rem, 10vw, 5.2rem);
 	font-weight: 900;
-	letter-spacing: 0.35em;
-	text-indent: 0.35em; /* letter-spacingによる右側のズレ補正 */
+	letter-spacing: 0.3em;
+	text-indent: 0.3em;
 	color: #ffffff;
 	text-transform: uppercase;
-	margin-bottom: 2.5rem;
+	margin-bottom: 2.2rem;
 	text-shadow: 
-		0 0 30px rgba(255, 0, 21, 0.25),
-		0 0 60px rgba(255, 0, 21, 0.1);
+		0 0 20px var(--nerv-red),
+		0 0 45px var(--nerv-red-glow),
+		0 0 80px rgba(255, 0, 29, 0.2);
 	user-select: none;
+	text-align: center;
 }
 
 #uv-form {
@@ -80,57 +79,68 @@ body {
 
 #uv-address {
 	width: 100%;
-	height: 52px;
+	height: 56px;
 	background: var(--input-bg);
 	border: 1px solid var(--border-color);
-	border-radius: 14px;
-	padding: 0 22px;
+	border-radius: 16px;
+	padding: 0 24px;
 	font-family: "Space Grotesk", sans-serif;
-	font-size: 0.95rem;
+	font-size: 1rem;
 	color: #ffffff;
 	outline: none;
 	transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+	box-shadow: 
+		0 8px 32px 0 rgba(0, 0, 0, 0.5),
+		0 0 15px rgba(255, 0, 29, 0.08);
 }
 
 #uv-address::placeholder {
-	color: rgba(255, 255, 255, 0.3);
-	font-weight: 300;
+	color: rgba(255, 255, 255, 0.35);
+	font-weight: 400;
 }
 
 #uv-address:focus {
-	border-color: rgba(255, 0, 21, 0.6);
-	background: rgba(22, 22, 28, 0.75);
+	border-color: var(--nerv-red);
+	background: rgba(30, 8, 12, 0.85);
 	box-shadow: 
-		0 0 0 4px rgba(255, 0, 21, 0.12),
-		0 12px 40px 0 rgba(0, 0, 0, 0.5);
+		0 0 0 3px rgba(255, 0, 29, 0.25),
+		0 0 25px rgba(255, 0, 29, 0.3),
+		0 12px 40px 0 rgba(0, 0, 0, 0.6);
 }
 
 .error-container {
 	margin-top: 1rem;
 	text-align: center;
+	min-height: 24px;
 }
 
 #uv-error {
 	color: var(--nerv-red);
 	font-size: 0.85rem;
+	text-shadow: 0 0 8px var(--nerv-red-glow);
 }
 
 #uv-error-code {
 	font-family: monospace;
 	font-size: 0.75rem;
-	color: #666;
+	color: rgba(255, 255, 255, 0.5);
 }
 
 .credits {
-	margin-top: 3rem;
+	margin-top: 2.8rem;
 	font-family: "Space Grotesk", sans-serif;
-	font-size: 0.7rem;
-	font-weight: 400;
-	letter-spacing: 0.25em;
+	font-size: 0.72rem;
+	font-weight: 500;
+	letter-spacing: 0.28em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.25);
+	color: rgba(255, 255, 255, 0.4);
 	user-select: none;
+	text-align: center;
+}
+
+.credits::before {
+	content: "• ";
+	color: var(--nerv-red);
 }
 
 #uv-frame {
@@ -142,4 +152,26 @@ body {
 	height: 100vh;
 	background-color: var(--bg-dark);
 	z-index: 999;
+}
+
+@media (max-width: 600px) {
+	.container {
+		padding: 0 16px;
+	}
+
+	.logo-title {
+		margin-bottom: 1.6rem;
+	}
+
+	#uv-address {
+		height: 50px;
+		font-size: 0.92rem;
+		padding: 0 18px;
+		border-radius: 12px;
+	}
+
+	.credits {
+		margin-top: 2rem;
+		font-size: 0.65rem;
+	}
 }
